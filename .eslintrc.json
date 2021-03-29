@@ -86,7 +86,7 @@
       }
     ],
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "trailingComma": "none",
         "singleQuote": true,

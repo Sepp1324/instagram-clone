@@ -6,7 +6,6 @@ export default function Timeline() {
   // get users photos from user logged in (hook)
   const { photos } = usePhotos();
 
-  console.log(`photos`, photos);
   // on loading the photos, need react skeleton
   // if we have photos -> render them (create a post component)
   // if user has no photos, tell them to create photos

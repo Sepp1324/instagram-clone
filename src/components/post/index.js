@@ -4,6 +4,7 @@ import Header from './header';
 import Image from './image';
 import Actions from './actions';
 import Footer from './footer';
+import Comments from './comments';
 
 export default function Post({ content }) {
   const commentInput = useRef(null);
@@ -24,6 +25,12 @@ export default function Post({ content }) {
         handleFocus={handleFocus}
       />
       <Footer username={content.username} caption={content.caption} />
+      <Comments
+        docId={content.docId}
+        comments={content.comments}
+        posted={content.dateCreated}
+        commentInput={commentInput}
+      />
     </div>
   );
 }

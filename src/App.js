@@ -19,7 +19,7 @@ export function App() {
           <Switch>
             <Route path={ROUTES.LOGIN} component={Login} />
             <Route path={ROUTES.SIGN_UP} component={SignUp} />
-            <Route path={ROUTES.DASHBOARD} component={Dashboard} exact />
+            <Route path={ROUTES.DASHBOARD} component={Dashboard} />
             <Route component={NotFound} />
           </Switch>
         </Suspense>

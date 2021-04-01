@@ -79,21 +79,19 @@ export default function Header({
           ) : (
             <>
               <p className='mr-10'>
-                <span className='font-bold'>
-                  {photosCount}
-                  {` `}
-                  {photosCount === 1 ? `photo` : `photos`}
-                </span>
+                <span className='font-bold'>{photosCount}</span>
+                {` `}
+                {photosCount === 1 ? `photo` : `photos`}
               </p>
               <p className='mr-10'>
                 <span className='font-bold'>
                   {followerCount}
                   {` `}
-                  {followerCount === 1 ? `follower` : `followers`}
                 </span>
+                {followerCount === 1 ? `follower` : `followers`}
               </p>
               <p className='mr-10'>
-                <span className='font-bold'>{following.length} following</span>
+                <span className='font-bold'>{following.length}</span> following
               </p>
             </>
           )}

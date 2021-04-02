@@ -4,6 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/use-user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
 import UserContext from '../../context/user';
+import { DEFAULT_IMAGE_PATH } from '../../constants/paths';
 
 export default function Header({
   photosCount,
@@ -45,13 +46,12 @@ export default function Header({
             className='rounded-full h-40 w-40 flex'
             src={`/images/avatars/${profileUsername}.jpg`}
             alt={`${profileUsername} profile picture`}
+            onError={event => {
+              event.target.src = DEFAULT_IMAGE_PATH;
+            }}
           />
         ) : (
-          <img
-            className='rounded-full h-40 w-40 flex'
-            src={`/images/avatars/pr1mus.jpg`}
-            alt={`pr1mus profile picture`}
-          />
+          <img className='rounded-full h-40 w-40 flex' src={DEFAULT_IMAGE_PATH} alt={`default profile picture`} />
         )}
       </div>
       <div className='flex items-center justify-center flex-col col-span-2'>
@@ -64,7 +64,7 @@ export default function Header({
               onClick={handleToggleFollow}
               onKeyDown={event => {
                 if (event.key === 'Enter') {
-                  handleToggleFollow(); // Continue:
+                  handleToggleFollow();
                 }
               }}
             >

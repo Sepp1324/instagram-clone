@@ -27,11 +27,20 @@ export async function getUserByUserId(userId) {
 }
 
 export async function getSuggestedProfiles(userId, following) {
-  const result = await firebase.firestore().collection('users').limit(10).get();
+  let query = firebase.firestore().collection('users');
 
-  return result.docs
-    .map(user => ({ ...user.data(), docId: user.id }))
-    .filter(profile => profile.userId !== userId && !following.includes(profile.userId));
+  if (following.length > 0) {
+    query = query.where('userId', 'not-in', [...following, userId]);
+  } else {
+    query = query.where('userId', '!=', userId);
+  }
+
+  const result = await query.limit(10).get();
+
+  return result.docs.map(user => ({
+    ...user.data(),
+    docId: user.id
+  }));
 }
 
 export async function updateLoggedInUserFollowing(
@@ -85,15 +94,13 @@ export async function getPhotos(userId, following) {
   return photosWithUserDetails;
 }
 
-export async function getUserPhotosByUsername(username) {
-  const [user] = await getUserByUsername(username);
-  const result = await firebase.firestore().collection('photos').where('userId', '==', user.userId).get();
+export async function getUserPhotosByUserId(userId) {
+  const result = await firebase.firestore().collection('photos').where('userId', '==', userId).get();
 
-  const photos = result.docs.map(item => ({
-    ...item.data(),
-    docId: item.id
+  return result.docs.map(photo => ({
+    ...photo.data(),
+    docId: photo.id
   }));
-  return photos;
 }
 
 export async function isUserFollowingProfile(loggedInUsername, profileUserId) {

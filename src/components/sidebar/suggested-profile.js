@@ -1,18 +1,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  updateLoggedInUserFollowing,
-  updateFollowedUserFollowers
-} from '../../services/firebase';
+import { updateLoggedInUserFollowing, updateFollowedUserFollowers } from '../../services/firebase';
+import { DEFAULT_IMAGE_PATH } from '../../constants/paths';
 
-export default function SuggestedProfile({
-  profileDocId,
-  username,
-  profileId,
-  userId,
-  loggedInUserDocId
-}) {
+export default function SuggestedProfile({ profileDocId, username, profileId, userId, loggedInUserDocId }) {
   const [followed, setFollowed] = useState(false);
 
   async function handleFollowUser() {
@@ -28,17 +20,15 @@ export default function SuggestedProfile({
         <img
           className='rounded-full w-8 flex mr-3'
           src={`/images/avatars/${username}.jpg`}
-          alt={username}
+          onError={event => {
+            event.target.src = DEFAULT_IMAGE_PATH;
+          }}
         />
         <Link to={`/p/${username}`}>
           <p className='font-bold text-sm'>{username}</p>
         </Link>
       </div>
-      <button
-        className='text-xs font-bold text-blue-medium'
-        type='button'
-        onClick={handleFollowUser}
-      >
+      <button className='text-xs font-bold text-blue-medium' type='button' onClick={handleFollowUser}>
         Follow
       </button>
     </div>

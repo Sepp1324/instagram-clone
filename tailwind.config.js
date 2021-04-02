@@ -1,8 +1,10 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true
   },
   purge: {
+    enabled: true,
     content: ['./src/**/*.js', './src/**/**/*.js']
   },
   theme: {

@@ -37,6 +37,7 @@ export default function SignUp() {
           fullName,
           emailAddress: emailAddress.toLocaleLowerCase(),
           following: [],
+          followers: [],
           dateCreated: Date.now()
         });
 
@@ -48,6 +49,7 @@ export default function SignUp() {
         setError(error.message);
       }
     } else {
+      setUsername('');
       setError('Username is already taken!');
     }
   };

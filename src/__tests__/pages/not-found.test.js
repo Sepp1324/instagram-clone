@@ -49,7 +49,7 @@ describe('<NotFound />', () => {
 
       await waitFor(() => {
         expect(queryByText('Not Found!')).toBeTruthy();
-        expect(document.title).toBe('404 - Not Found!');
+        expect(document.title).toBe('404 - Not Found!'); // CONTINUE: 50:21
       });
     });
   });

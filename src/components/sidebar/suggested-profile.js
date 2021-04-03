@@ -9,7 +9,6 @@ export default function SuggestedProfile({ profileDocId, username, profileId, us
 
   async function handleFollowUser() {
     setFollowed(true);
-
     await updateLoggedInUserFollowing(loggedInUserDocId, profileId, false);
     await updateFollowedUserFollowers(profileDocId, userId, false);
   }
@@ -17,13 +16,7 @@ export default function SuggestedProfile({ profileDocId, username, profileId, us
   return !followed ? (
     <div className='flex flex-row items-center align-items justify-between'>
       <div className='flex items-center justify-between'>
-        <img
-          className='rounded-full w-8 flex mr-3'
-          src={`/images/avatars/${username}.jpg`}
-          onError={event => {
-            event.target.src = DEFAULT_IMAGE_PATH;
-          }}
-        />
+        <img className='rounded-full w-8 flex mr-3' src={`/images/avatars/${username}.jpg`} alt='' />
         <Link to={`/p/${username}`}>
           <p className='font-bold text-sm'>{username}</p>
         </Link>
@@ -36,7 +29,7 @@ export default function SuggestedProfile({ profileDocId, username, profileId, us
 }
 
 SuggestedProfile.propTypes = {
-  profileDocId: PropTypes.string.isRequired,
+  profileDocId: PropTypes.string,
   username: PropTypes.string.isRequired,
   profileId: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,

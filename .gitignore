@@ -26,6 +26,3 @@ yarn-error.log*
 .vscode
 .eslintcache
 .eslintrc.json
-
-# mocks
-src/fixtures

@@ -15,7 +15,7 @@ export default function Timeline() {
   // if user has no photos, tell them to create photos
 
   return (
-    <div className='container col-span-2'>
+    <div className='col-span-3 lg:col-span-2'>
       {!photos ? (
         <>
           <Skeleton count={4} width={640} height={500} className='mb-5' />)
@@ -25,6 +25,6 @@ export default function Timeline() {
       ) : (
         <p className='text-center text-2xl'>Follow people to see their posts!</p>
       )}
-    </div>
+    </div> // 2h 41
   );
 }

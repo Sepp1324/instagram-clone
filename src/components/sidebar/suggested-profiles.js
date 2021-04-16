@@ -16,7 +16,14 @@ export default function SuggestedProfile({ profileDocId, username, profileId, us
   return !followed ? (
     <div className='flex flex-row items-center align-items justify-between'>
       <div className='flex items-center justify-between'>
-        <img className='rounded-full w-8 flex mr-3' src={`/images/avatars/${username}.jpg`} alt='' />
+        <img
+          className='rounded-full w-8 flex mr-3'
+          src={`/images/avatars/${username}.jpg`}
+          alt=''
+          onError={event => {
+            event.target.src = DEFAULT_IMAGE_PATH;
+          }}
+        />
         <Link to={`/p/${username}`}>
           <p className='font-bold text-sm'>{username}</p>
         </Link>
@@ -29,7 +36,7 @@ export default function SuggestedProfile({ profileDocId, username, profileId, us
 }
 
 SuggestedProfile.propTypes = {
-  profileDocId: PropTypes.string,
+  profileDocId: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   profileId: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,

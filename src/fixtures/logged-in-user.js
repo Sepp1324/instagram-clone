@@ -1,9 +1,9 @@
 export default {
-  userId: 'uUV43rOEyXQyYAvx2ACbrlxdDPs2',
-  username: 'test',
-  fullName: 'test test',
-  emailAddress: 'test@gmail.com',
+  userId: 'meoqrKaMqsecY3rM6T7KnR8duGn1',
+  username: 'pr1mus',
+  fullName: 'Sebastian Stögerer',
+  emailAddress: 'stoegerer.sebastian@aon.at',
   following: ['2'],
-  followers: ['2'],
-  dateCreated: 1617407540612
+  followers: ['2', '1', '3'],
+  dateCreated: 1617098652272
 };
